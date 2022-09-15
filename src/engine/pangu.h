@@ -62,6 +62,47 @@ static_assert(sizeof(i8)==1,"Incorrect sizeof i8");
 
 struct EntityRef;
 
+struct EntityPtr{
+	i32 index;
+	EntityPtr():index(-1){}
+	explicit  EntityPtr(i32 index):index(index){};
+	bool operator==(const EntityPtr& rhs) const{return rhs.index == index;}
+	bool operator<(const EntityPtr& rhs) const{return rhs.index<index;}
+	bool operator>(const EntityPtr& rhs) const {return rhs.index>index;}
+	bool operator!=(const EntityPtr& rhs) const {return rhs.index!=index;}
+	bool isValid() const{return index>0;}
+	// TODO
+	inline explicit  operator EntityRef() const;
+	inline  EntityRef operator *() const;
+};
+
+struct EntityRef{
+	i32 index;
+	bool operator==(const EntityRef& rhs) const{return rhs.index == index;}
+	bool operator<(const EntityRef& rhs) const{return rhs.index<index;}
+	bool operator>(const EntityRef& rhs) const{return rhs.index>index;}
+	bool operator!=(const EntityRef& rhs) const{return rhs.index!=index;}
+	operator EntityRef() {return EntityRef{index};}
+};
+
+struct ComponentType{
+	enum {MAX_TYPES_COUNT = 64};
+	i32 index;
+	bool operator==(const ComponentType& rhs) const{return rhs.index==index;}
+	bool operator<(const ComponentType& rhs) const{return rhs.index<index;}
+	bool operator>(const ComponentType& rhs) const{return rhs.index>index;}
+	bool operator!=(const ComponentType& rhs) const{return rhs.index!=index;}
+};
+
+const ComponentType INVALID_COMPONENT_TYPE = {-1};
+const EntityPtr INVALID_ENTITY = EntityPtr{-1};
+// TODO
+template<typename T,u32 count> constexpr u32 lengthOf(const T(&)[count]){
+	return count;
+}
+
+
+
 
 }
 

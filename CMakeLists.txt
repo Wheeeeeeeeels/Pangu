@@ -3,4 +3,4 @@ project(pangu)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(pangu main.cpp)
+add_executable(pangu main.cpp src/engine/pangu.h)

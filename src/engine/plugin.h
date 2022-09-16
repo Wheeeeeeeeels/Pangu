@@ -1,0 +1,1 @@
+//// Created by Administrator on 2022/9/16.//#pragma once#include "pangu.h"#ifndef PANGU_PLUGIN_H#define PANGU_PLUGIN_Hclass plugin {};#endif // PANGU_PLUGIN_H

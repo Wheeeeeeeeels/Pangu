@@ -31,4 +31,4 @@ add_executable(pangu main.cpp
                src/engine/log.h
                src/engine/thread.h
                src/engine/string.cpp
-               src/engine/string.h)
+               src/engine/string.h src/engine/command_line_parser.h src/engine/control_device.h src/engine/core.cpp src/engine/core.h src/engine/resource_manager.cpp src/engine/resource_manager.h src/engine/sync.h src/engine/geometry.cpp src/engine/geometry.h src/engine/hash.cpp src/engine/hash.h src/engine/input_system.cpp src/engine/input_system.h src/engine/plugin.cpp src/engine/plugin.h src/engine/prefab.cpp src/engine/prefab.h src/engine/reflection.cpp src/engine/reflection.h)

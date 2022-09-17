@@ -31,7 +31,7 @@ struct  PANGU_ENGINE_API IAllocator{
 	   virtual void deallocate_aligned(void* ptr) = 0;
 	   virtual void* reallocate_aligned(void* ptr,size_t size) = 0;
 
-	   template <class T> void deleteObjects(T* ptr){
+	   template <class T> void deleteObject(T* ptr){
 		   if(ptr){
 			   ptr->~T();
 			   deallocate_aligned(ptr);
@@ -75,9 +75,12 @@ struct UniquePtr{
     }
     ~UniquePtr(){
         if(m_ptr){
-           // PANGU_DELETE(*m_allocator,m_prt);
+            PANGU_DELETE(*m_allocator,m_ptr);
         }
     }
+    // 右值引用:https://blog.csdn.net/weixin_36343299/article/details/112124097
+    UniquePtr(const UniquePtr& rhs) = delete;
+    void operator=(const UniquePtr& rhs) = delete;
 
 private:
     T* m_ptr = nullptr;
